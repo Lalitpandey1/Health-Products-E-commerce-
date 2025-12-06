@@ -1,0 +1,37 @@
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+/* --- 1. Base Style for ALL Dots (Inactive) --- */
+.slick-dots li div > div {
+  /* This is the inner dot that appears on ALL slides */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray; /* The default gray color for inactive dots */
+}
+
+/* --- 2. Style for the ACTIVE Dot (The Ring) --- */
+.slick-dots li.slick-active div {
+  /* Targeting the OUTER div of the active slide to create the ring */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid black; /* Creates the Black Ring */
+
+  /* Ensure the inner dot is perfectly centered within this new ring area */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- 3. Style for the INNER Dot on the ACTIVE Slide --- */
+.slick-dots li.slick-active div > div {
+  /* Targeting the INNER dot on the active slide */
+  width: 10px; /* Same size as the inactive dot */
+  height: 10px;
+  background-color: black !important; /* Fills the center of the ring with black */
+}
