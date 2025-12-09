@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 // import data from "../../assets/BestSellerData.jsx";
 import ProductCardComponent from "../productCard/ProductCard";
 import Slider from "react-slick";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import FallBack from "../fallBack/FallBack";
 
 const ProductCarousel = ({
   title,
@@ -83,12 +84,6 @@ const ProductCarousel = ({
     ],
   };
 
-  const handleSubCategory = (category) => {
-    setActiveCategory(category);
-    // You would typically add logic here to filter 'data' based on the 'category'
-    console.log(`Filtering for: ${category}`);
-  };
-
   return (
     <div className="w-full">
       {/* Desktop */}
@@ -108,35 +103,39 @@ const ProductCarousel = ({
               subCategories.map((category) => (
                 <span
                   key={category}
-                  className={`whitespace-nowrap cursor-pointer transition-colors duration-200 ${
+                  className={`whitespace-nowrap cursor-pointer transition-colors duration-200 
+                  ${
                     activeCategory === category
                       ? "text-green-500 font-bold" // Active style: green and bold
                       : "text-black hover:text-green-400" // Inactive style: black, hover effect
                   }`}
-                  onClick={() => handleSubCategory(category)} // Pass the category to the handler
+                  onClick={() => setActiveCategory(category)}
+                  // Pass the category to the handler
                 >
                   {category}
                 </span>
               ))}
           </div>
         </div>
-        <Slider {...settings}>
-          {data.map((data) => (
-            <div key={data.id} className="w-full overflow-hidden">
-              <ProductCardComponent
-                id={data.id}
-                images={data.images}
-                title={data.title}
-                rating={data.rating}
-                discount={data.discount}
-                totalPrice={data.totalPrice}
-                Price={data.Price}
-                bestSeller={isBestSeller}
-                AddtoCart={isAddtoCart}
-              />
-            </div>
-          ))}
-        </Slider>
+        <Suspense fallback={<FallBack />}>
+          <Slider {...settings}>
+            {data.map((data) => (
+              <div key={data.id} className="w-full overflow-hidden">
+                <ProductCardComponent
+                  id={data.id}
+                  images={data.images}
+                  title={data.title}
+                  rating={data.rating}
+                  discount={data.discount}
+                  totalPrice={data.totalPrice}
+                  Price={data.Price}
+                  bestSeller={isBestSeller}
+                  AddtoCart={isAddtoCart}
+                />
+              </div>
+            ))}
+          </Slider>
+        </Suspense>
       </div>
 
       {/* Mobile Screen Component */}

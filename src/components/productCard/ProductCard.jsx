@@ -2,7 +2,6 @@ import React from "react";
 import { addItem } from "../../store/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { Heart } from "lucide-react"; // Assuming you still use lucide-react for the Heart icon
-import FallBack from "../../assets/FallBack.webp"; // Assuming FallBack is the correct image source
 import Star from "../star/Star";
 import { useNavigate } from "react-router-dom";
 

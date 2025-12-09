@@ -1,13 +1,18 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import ImageContainer from "./ImageContainer";
 import Star from "../../components/star/Star";
-import ProductCarousel from "../../components/productCarousel/ProductCarousel";
+
+const ImageContainer = lazy(() => import("./ImageContainer"));
+const Footer = lazy(() => import("../../components/footer/Footer"));
+const ProductCarousel = lazy(() =>
+  import("../../components/productCarousel/ProductCarousel")
+);
 import { useDispatch, useSelector } from "react-redux";
-import Footer from "../../components/footer/Footer";
+
 import { addItem } from "../../store/slices/cartSlice";
 import { selectProductLookup } from "../../store/slices/productSlice";
 import { useParams } from "react-router-dom";
+import FallBack from "../../components/fallBack/FallBack";
 
 const ProductPage = ({ id }) => {
   const allProducts = useSelector(selectProductLookup);
@@ -36,7 +41,9 @@ const ProductPage = ({ id }) => {
       <Navbar />
       <div className="bg-[#ffff] flex flex-col gap-4 my-5 lg:flex-row ">
         <div className="xl:w-[60%] lg:h-140 w-full  overflow-hidden">
-          <ImageContainer productId={id || "A001"} />
+          <Suspense fallback={<FallBack />}>
+            <ImageContainer productId={id || "A001"} />
+          </Suspense>
         </div>
 
         <div className="pl-3 xl:w-[40%] text-black w-full bg-[#F0F0F0] rounded-2xl justify-items-start">
@@ -86,15 +93,18 @@ const ProductPage = ({ id }) => {
         </p>
       </div>
       <div className="my-7"></div>
-      <ProductCarousel
-        title={"Best Sellers"}
-        categories={bestSellerCategories}
-        isAddtoCart={true}
-        isBestSeller={false}
-        products={allProducts}
-        showmenu={false}
-      />
-      <Footer />
+      <Suspense fallback={<FallBack />}>
+        <ProductCarousel
+          title={"Best Sellers"}
+          categories={bestSellerCategories}
+          isAddtoCart={true}
+          isBestSeller={false}
+          products={allProducts}
+          showmenu={false}
+        />
+
+        <Footer />
+      </Suspense>
     </div>
   );
 };
