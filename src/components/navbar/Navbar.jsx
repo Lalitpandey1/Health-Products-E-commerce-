@@ -7,7 +7,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { IoBagHandle } from "react-icons/io5";
-import CartCount from "../../services/CartCount";
+import CartCount from "../../services/cartCount";
 import { useNavigate } from "react-router-dom";
 import Modal from "../modal/Modal";
 
