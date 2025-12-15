@@ -1,10 +1,10 @@
 import "./App.css";
-import HomePage from "./pages/Homes";
+import HomePage from "./pages/home/Home.jsx";
 function App() {
   return (
-    <>
+    <div className=" w-full mx-auto">
       <HomePage />
-    </>
+    </div>
   );
 }
 

@@ -2,10 +2,7 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { selectProductLookup } from "./productSlice";
 
 const initialState = {
-  items: [
-    { id: "A001", Qty: 3 },
-    { id: "B045", Qty: 1 },
-  ],
+  items: [],
 };
 
 export const cartSlice = createSlice({

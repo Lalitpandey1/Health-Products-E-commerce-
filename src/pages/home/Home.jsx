@@ -1,23 +1,26 @@
 import React, { lazy, Suspense } from "react";
-import ComponentContainer from "../containers/ComponentContainer";
-import Navbar from "../components/navbar/Navbar";
-import FallBack from "../components/fallBack/FallBack";
+import ComponentContainer from "../../containers/ComponentContainer";
 
-const OfferSlider = lazy(() => import("../components/offerSlider/OfferSlider"));
+import Navbar from "../../components/navbar/Navbar";
+import FallBack from "../../components/fallBack/FallBack";
+
+const OfferSlider = lazy(() =>
+  import("../../components/offerSlider/OfferSlider")
+);
 
 const ProductCategories = lazy(() =>
-  import("../components/shopCategories/ProductCategories")
+  import("../../components/shopCategories/ProductCategories")
 );
 const ProductCarousel = lazy(() =>
-  import("../components/productCarousel/ProductCarousel")
+  import("../../components/productCarousel/ProductCarousel")
 );
 const LimitedOffer = lazy(() =>
-  import("../components/limitedOffer/LimitedOffer")
+  import("../../components/limitedOffer/LimitedOffer")
 );
-const ContactTab = lazy(() => import("../components/contactTab/ContactTab"));
-const Footer = lazy(() => import("../components/footer/Footer"));
+const ContactTab = lazy(() => import("../../components/contactTab/ContactTab"));
+const Footer = lazy(() => import("../../components/footer/Footer"));
 
-import { selectProductLookup } from "../store/slices/productSlice";
+import { selectProductLookup } from "../../store/slices/productSlice";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {

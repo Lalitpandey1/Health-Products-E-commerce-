@@ -16,7 +16,7 @@ const ProductCard = ({
   bestSeller,
   AddtoCart,
 }) => {
-  const maxTitleString = 50;
+  const maxTitleString = 43;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleNavigate = (id) => {
@@ -31,7 +31,7 @@ const ProductCard = ({
   return (
     // Add 'relative' to the parent container
     <div
-      className="relative flex flex-col items-center justify-center px-3 md:px-8 xl:px-9 border border-[#DCDCDC] hover:border-[#E0E0E0] bg-[#F0F0F0] hover:bg-green-100  rounded-2xl shadow-lg mx-auto  "
+      className="relative shadow-lg mx-auto flex flex-col items-center justify-center rounded-2xl px-3 md:px-8 xl:px-9 border border-[#DCDCDC] hover:border-[#E0E0E0] bg-[#F0F0F0] hover:bg-green-100 h-95"
       onClick={() => handleNavigate(id)}
     >
       {/* BESTSELLER Tag - Adjusted for positioning */}
@@ -58,7 +58,7 @@ const ProductCard = ({
       <img
         src={images && images.length > 0 ? images[0] : category6}
         alt="title"
-        className=" py-1 max-w-full max-h-[200px] "
+        className=" py-1 w-full h-full object-cover"
       />
 
       {AddtoCart && (
