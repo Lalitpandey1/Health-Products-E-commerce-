@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import productImg from "../../assets/LimitedOffer/Products.webp";
+import productImg from "../../assets/limitedOffer/Products.webp";
 // This is 2 days, 16 hours, 45 minutes in seconds
 const STARTING_TIME_IN_SECONDS = 233100;
 
